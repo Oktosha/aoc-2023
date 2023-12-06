@@ -2,7 +2,7 @@
 // Run from the command line as follows:
 // $ swift 4a.swift 4.example
 // ...[some debug data]...
-// answer: ???
+// answer: 13
 
 import Foundation
 import RegexBuilder
@@ -55,4 +55,4 @@ for card in data.components(separatedBy: "\n") {
     // print(winningCount)
     ans += score(winningCount)
 }
-print(ans)
+print("answer:", ans)

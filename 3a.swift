@@ -1,8 +1,7 @@
 // Solves Day 3 part 1
 // Run from the command line as follows:
 // $ swift 3a.swift 3.example
-// ...[some debug data]...
-// answer: ???
+// answer: 4361
 
 import Foundation
 
@@ -49,4 +48,4 @@ if (data2D.last!.last!.isNumber && adjacentToPart) {
     ans += numberSoFar   
 }
 
-print(ans)
+print("answer:", ans)

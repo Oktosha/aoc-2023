@@ -2,7 +2,7 @@
 // Run from the command line as follows:
 // $ swift 3b.swift 3.example
 // ...[some debug data]...
-// answer: ???
+// answer: 467835
 
 import Foundation
 
@@ -74,4 +74,4 @@ for row in 0..<height {
     }
 }
 
-print(answer)
+print("answer:", answer)

@@ -1,8 +1,7 @@
 // Solves Day 5 part 1
 // Run from the command line as follows:
 // $ swift 5a.swift 5.example
-// ...[some debug data]...
-// answer: ???
+// answer: 35
 
 import Foundation
 import RegexBuilder
@@ -111,4 +110,4 @@ for map in maps {
     }
 }
 
-print(values.min()!)
+print("answer:", values.min()!)

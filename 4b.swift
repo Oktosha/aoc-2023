@@ -2,7 +2,7 @@
 // Run from the command line as follows:
 // $ swift 4b.swift 4.example
 // ...[some debug data]...
-// answer: ???
+// answer: 30
 
 import Foundation
 import RegexBuilder
@@ -55,4 +55,4 @@ for i in 0..<NumberOfCardTypes {
     sum += numberOfCopies[i]
     print(i, numberOfCopies[i])
 }
-print(sum)
+print("answer:", sum)

@@ -7,7 +7,7 @@
 
 // To get the answer for the second part delete spaces between numbers in the input file:
 // $ swift 6.swift 6b.example
-// ...[can take a while]...
+// ...[example input calculates instantly, real input takes ≈13 seconds on my machine]...
 // answer: 71503
 
 import Foundation
