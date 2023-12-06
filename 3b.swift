@@ -1,6 +1,13 @@
+// Solves Day 3 part 2
+// Run from the command line as follows:
+// $ swift 3b.swift 3.example
+// ...[some debug data]...
+// answer: ???
+
 import Foundation
 
-let data = try! String(contentsOfFile: "3.txt")
+let dataFile = CommandLine.arguments[1]
+let data = try! String(contentsOfFile: dataFile)
 var data2D = data.components(separatedBy: "\n").dropLast().map({Array($0)}) // dropping last line, it's empty
 
 let height = data2D.count

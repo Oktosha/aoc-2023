@@ -1,3 +1,9 @@
+// Solves Day 1 part 2
+// Run from the command line as follows:
+// $ swift 1b.swift 1b.example
+// ...[some debug data]...
+// answer: 281
+
 import Foundation
 
 func parseNumber(_ num: Substring) -> Int {
@@ -52,8 +58,8 @@ func parseReversedNumber(_ num: Substring) -> Int {
     }
 }
 
-let fileUrl = Bundle.main.url(forResource: "1", withExtension: "txt")!
-let data = try! String(contentsOf: fileUrl, encoding: .utf8)
+let dataFile = CommandLine.arguments[1]
+let data = try! String(contentsOfFile: dataFile)
 var overallSum = 0
 let numregex = try! Regex(#"\d|one|two|three|four|five|six|seven|eight|nine"#)
 let reversedNumregex = try! Regex(#"\d|eno|owt|eerht|ruof|evif|xis|neves|thgie|enin"#)
@@ -69,4 +75,4 @@ for line in data.components(separatedBy: "\n") {
     print("\(line): \(firstNumStr) --- \(lastNumStr) = \(lineSum)")
     overallSum += lineSum
 }
-print(overallSum)
+print("answer:", overallSum)

@@ -1,3 +1,9 @@
+// Work in progress for day 5 part 2
+// Run from the command line as follows:
+// $ swift 5b.swift 5.example
+// ...[some debug data]...
+// answer: ???
+
 import Foundation
 import RegexBuilder
 
@@ -138,7 +144,8 @@ func performMap(sources: inout [ValueRange], with mapping: AlmanacRange) -> [Val
     return newValues
 }
 
-let rawData = try! String(contentsOfFile: "5.example")
+let dataFile = CommandLine.arguments[1]
+let rawData = try! String(contentsOfFile: dataFile)
 let parsedData = rawData.firstMatch(of: dataRegex)!.output
 var values = parsedData.1
 var maps = parsedData.2

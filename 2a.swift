@@ -1,3 +1,9 @@
+// Solves Day 2 part 1
+// Run from the command line as follows:
+// $ swift 2a.swift 2.example
+// ...[some debug data]...
+// answer: 8
+
 import Foundation
 
 let gameTitleRegex = #/Game (?<gameId>\d+): /#
@@ -6,7 +12,8 @@ let greenRegex = #/(?<count>\d+) green/#
 let blueRegex = #/(?<count>\d+) blue/#
 var answer = 0
 
-let data = try! String(contentsOfFile: "2.txt")
+let dataFile = CommandLine.arguments[1]
+let data = try! String(contentsOfFile: dataFile)
 for line in data.components(separatedBy: "\n") {
     guard let gameTitleMatch = try! gameTitleRegex.firstMatch(in: line) else { continue }
     let gameId = Int(gameTitleMatch.gameId)!
@@ -35,4 +42,4 @@ for line in data.components(separatedBy: "\n") {
         answer += gameId
     }
 }
-print(answer)
+print("answer:", answer)

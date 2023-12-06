@@ -1,5 +1,14 @@
+// Solves Day 4 part 1
+// Run from the command line as follows:
+// $ swift 4a.swift 4.example
+// ...[some debug data]...
+// answer: ???
+
 import Foundation
 import RegexBuilder
+
+let dataFile = CommandLine.arguments[1]
+let data = try! String(contentsOfFile: dataFile)
 
 func parseIntArray(_ s: Substring) -> [Int] {
     // print("parsing ints in \(s)...")
@@ -10,7 +19,6 @@ func parseIntArray(_ s: Substring) -> [Int] {
     return answer
 }
 
-let data = try! String(contentsOfFile: "4.input")
 let cardRegex = Regex {
     #/Card\s+\d+:/#
     Capture {

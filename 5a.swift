@@ -1,3 +1,9 @@
+// Solves Day 5 part 1
+// Run from the command line as follows:
+// $ swift 5a.swift 5.example
+// ...[some debug data]...
+// answer: ???
+
 import Foundation
 import RegexBuilder
 
@@ -94,7 +100,8 @@ func performMap(value: inout Int, with map: AlmanacMap)
     }
 }
 
-let rawData = try! String(contentsOfFile: "5.input")
+let dataFile = CommandLine.arguments[1]
+let rawData = try! String(contentsOfFile: dataFile)
 let parsedData = rawData.firstMatch(of: dataRegex)!.output
 var values = parsedData.1
 let maps = parsedData.2

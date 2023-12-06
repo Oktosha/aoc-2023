@@ -1,3 +1,15 @@
+// Solves Day 6 both parts
+
+// Run from the command line as follows to get the first part:
+// $ swift 6.swift 6.example
+// ...[some debug data]...
+// answer: 288
+
+// To get the answer for the second part delete spaces between numbers in the input file:
+// $ swift 6.swift 6b.example
+// ...[can take a while]...
+// answer: 71503
+
 import Foundation
 import RegexBuilder
 
@@ -36,4 +48,4 @@ for i in 0..<count {
     print("You can win race \(i) with \(winningCount) different strategies")
     answer *= winningCount
 }
-print(answer)
+print("answer:", answer)
