@@ -1,8 +1,8 @@
-// Solves Day 7 part 1
+// Solves Day 7 part 2
 // Run from the command line as follows:
-// $ swift 7a.swift 7.example
+// $ swift 7b.swift 7.example
 // ...[some debug data]...
-// answer: 6440
+// answer: 5905
 
 import Foundation
 import RegexBuilder
@@ -31,29 +31,37 @@ enum CamelHandType: Int {
     case HighCard
 }
 
-let cardLiterals = "AKQJT98765432"
+let cardLiterals = "AKQT98765432J"
 
 func getHandType(_ hand: String) -> CamelHandType {
-    var counts: [Int] = []
-    for card in cardLiterals {
-        counts.append(hand.filter{$0==card}.count)
+    var answer = CamelHandType.HighCard
+    for jokerValue in cardLiterals.dropLast() {
+        var counts: [Int] = []
+        for card in cardLiterals.dropLast() {
+            let count = hand.filter{$0==card}.count
+            let jokerCount = hand.filter{$0=="J"}.count
+            if (jokerValue == card) {
+                counts.append(count + jokerCount)
+            } else {
+                counts.append(count)
+            }
+        }
+        counts = counts.sorted().reversed()
+        if (counts[0] == 5) {
+            return .FiveOfAKind
+        } else if (counts[0] == 4) && aIsWeaker(a: answer, b: .FourOfAKind) {
+            answer = .FourOfAKind
+        } else if (counts[0] == 3 && counts[1] == 2) && aIsWeaker(a: answer, b: .FullHouse) {
+            answer = .FullHouse
+        } else if (counts[0] == 3) && aIsWeaker(a: answer, b: .ThreeOfAKind) {
+            answer = .ThreeOfAKind
+        } else if (counts[0] == 2 && counts[1] == 2) && aIsWeaker(a: answer, b: .TwoPair) {
+            answer = .TwoPair
+        } else if (counts[0] == 2) && aIsWeaker(a: answer, b: .OnePair) {
+            answer = .OnePair
+        }
     }
-    counts = counts.sorted().reversed()
-    if (counts[0] == 5) {
-        return .FiveOfAKind
-    } else if (counts[0] == 4) {
-        return .FourOfAKind
-    } else if (counts[0] == 3 && counts[1] == 2) {
-        return .FullHouse
-    } else if (counts[0] == 3) {
-        return .ThreeOfAKind
-    } else if (counts[0] == 2 && counts[1] == 2) {
-        return .TwoPair
-    } else if (counts[0] == 2) {
-        return .OnePair
-    } else {
-        return .HighCard
-    }
+    return answer;
 }
 
 func aIsWeaker(a: Character, b: Character) -> Bool {
