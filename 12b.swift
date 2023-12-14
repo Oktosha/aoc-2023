@@ -1,5 +1,12 @@
 import Foundation
 
+struct ResKey: Hashable {
+    var nums: [Int]
+    var pattern: String
+}
+
+var memo = [ResKey: Int]()
+
 func canFit(at start: Int, len: Int, pattern: String) -> Bool {
     if start + len > pattern.count {
         return false
@@ -49,6 +56,9 @@ func fit(_ nums: [Int], into pattern: String) -> Int {
     if pattern.count < minimalRequiredWidth {
         return 0
     }
+    if let ans = memo[ResKey(nums: nums, pattern: pattern)] {
+        return ans
+    }
     let currentNum = nums.first!
     let restNums = nums.dropFirst()
     if restNums.isEmpty {
@@ -60,6 +70,7 @@ func fit(_ nums: [Int], into pattern: String) -> Int {
             ans += fit(Array(restNums), into: String(pattern.dropFirst(currentNumStart + currentNum + 1)))
         }
     }
+    memo[ResKey(nums: nums, pattern: pattern)] = ans
     return ans
 }
 
