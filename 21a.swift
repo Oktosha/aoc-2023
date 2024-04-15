@@ -5,9 +5,9 @@ let nSteps = Int(CommandLine.arguments[2])!
 let rawData = try! String(contentsOfFile: dataFile)
 
 var a = rawData.trimmingCharacters(in: .newlines).components(separatedBy: .newlines).map {Array($0).map {e in String(e)}}
-for line in a {
-    print(line)
-}
+// for line in a {
+//     print(line)
+// }
 let height = a.count
 let width = a[0].count
 
@@ -38,9 +38,9 @@ for line in a {
         if ch == "O" {
             ans += 1
         }
-        print(ch, terminator: "")
+        // print(ch, terminator: "")
     }
-    print()
+    // print()
 }
 
 print("answer:", ans)
